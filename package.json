@@ -2,6 +2,11 @@
   "name": "TourOfHeroes",
   "version": "0.0.1",
   "dependencies": {
-    "express": "^4.16.2"
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "express": "^4.16.2",
+    "mocha": "^4.0.1",
+    "request": "^2.83.0",
+    "sinon": "^4.1.1"
   }
 }
