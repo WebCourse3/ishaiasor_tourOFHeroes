@@ -1,8 +1,19 @@
+var heroesTest = [
+	{id:1,name:'moses'},
+	{id:2,name:'jody'},
+	{id:3,name:'jany'},
+	{id:4,name:'gon'},
+	{id:5,name:'ishai'}
+];
 const chai = require('chai');
+let assert = require('assert');
 var should = chai.should();
 var chaiHttp = require('chai-http');
 chai.use(chaiHttp);
+sinon = require('sinon')
 var server = require('../server.js');
+let actions = require('../actions');
+actions = new actions.action();
 
 describe('server test', () => {
 
@@ -39,6 +50,18 @@ describe('server test', () => {
 		});
 	});
 
+    describe('update hero name by id',function () {
+	   it('update hero name by id',function (done) {
+		   const contStub = {};
+		   contStub.findUserByIDStub= sinon.stub();
+		   contStub.findUserByIDStub.withArgs(1,heroesTest).returns(heroesTest[0]);
+
+		   actions.findUserByID = contStub.findUserByIDStub;
+		   actions.updateUserByID(1,'dani',heroesTest);
+		   assert.equal(heroesTest[0].name,"dani");
+		   done();
+	   });
+    });
 
 });
 
